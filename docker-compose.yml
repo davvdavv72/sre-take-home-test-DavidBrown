@@ -1,0 +1,40 @@
+# Run the whole stack locally:
+#
+#   docker compose up --build
+#   open http://localhost:8080
+#
+# Only the web tier is published; the backend is reachable only via /api.
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: suittracker-server:local
+    volumes:
+      - server-data:/data
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    image: suittracker-web:local
+    environment:
+      API_UPSTREAM: http://server:8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - server
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/_health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  server-data:

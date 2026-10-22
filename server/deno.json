@@ -4,7 +4,7 @@
   "exports": {},
   "tasks": {
     "dev": "deno run --allow-net --allow-read --allow-write --allow-ffi --allow-env --env-file=../.env --watch main.ts",
-    "build": "sh -c 'deno compile --output build/server --target ${ARCH:-x86_64-unknown-linux-gnu} ./main.ts'"
+    "build": "sh -c 'deno compile --allow-net --allow-env --allow-read --allow-write --allow-ffi --output build/server --target ${ARCH:-x86_64-unknown-linux-gnu} ./main.ts'"
   },
   "imports": {
     "@db/sqlite": "jsr:@db/sqlite@^0.12.0",

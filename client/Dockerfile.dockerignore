@@ -1,0 +1,11 @@
+# Allowlist for the frontend image (client/Dockerfile, built from the repo root).
+*
+!deno.json
+!deno.lock
+!lib/
+!server/deno.json
+!client/
+
+# Local build output and installed packages
+client/build/
+**/node_modules/

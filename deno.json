@@ -2,6 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/denoland/deno/refs/heads/v2.1/cli/schemas/config-file.v1.json",
   "workspace": ["./server", "./client", "./lib"],
   "nodeModulesDir": "auto",
+  "fmt": {
+    "exclude": ["Readme.md", "Instructions.md"]
+  },
   "tasks": {
     "dev": {
       "dependencies": ["dev:server", "dev:client"]

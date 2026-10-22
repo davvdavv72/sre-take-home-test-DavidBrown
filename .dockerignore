@@ -1,0 +1,11 @@
+# Allowlist: send only what the server image build needs.
+*
+!deno.json
+!deno.lock
+!client/deno.json
+!lib/
+!server/
+
+# Local build output and dev databases
+server/build/
+server/tmp/

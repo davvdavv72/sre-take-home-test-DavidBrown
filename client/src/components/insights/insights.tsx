@@ -1,5 +1,6 @@
 import { Trash2Icon } from "lucide-react";
 import { cx } from "../../lib/cx.ts";
+// @ts-types="../../types/css-module.d.ts"
 import styles from "./insights.module.css";
 import type { Insight } from "../../schemas/insight.ts";
 
